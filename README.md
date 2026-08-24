@@ -15,7 +15,7 @@ END_METADATA -->
 
 [![Support and development by bluemint — module owned by Vipps MobilePay](./docs/images/partner-module-badge.png)](https://www.bluemint.no/)
 
-*This plugin is built and maintained by [bluemint](https://www.bluemint.no/) and is hosted on [GitHub](https://github.com/vippsas/vipps-hyva-magento).
+*This plugin is built and maintained by [bluemint](https://www.bluemint.no/) and is hosted on [GitHub](https://github.com/vippsas/vipps-login-hyva-magento).
 For support, email us at [vipps@bluemint.dev](mailto:vipps@bluemint.dev)*
 
 <!-- START_COMMENT -->
