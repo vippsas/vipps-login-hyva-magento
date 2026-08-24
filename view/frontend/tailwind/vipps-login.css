@@ -1,0 +1,38 @@
+.login-vipps {
+    @apply mt-2.5;
+}
+
+.icon-vipps {
+    @apply ml-2.5 inline-block self-center;
+    background-size: 55px 14px;
+    height: 15px;
+}
+
+.vipps-btn {
+    @apply border-0 flex text-white transform-none rounded-3xl;
+    background: var(--color-vipps);
+    padding: 10px 24px;
+
+    &.mobilepay {
+        background: var(--color-mobilepay);
+
+        &:hover,
+        &:focus,
+        &:active {
+            background: #5A78FF;
+        }
+    }
+
+    &:hover,
+    &:focus,
+    &:active {
+        @apply text-white border-0;
+        background: #ff7a4d;
+    }
+}
+
+.customer-account-create {
+    .form-create-account {
+        @apply hidden;
+    }
+}

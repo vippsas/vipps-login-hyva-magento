@@ -1,0 +1,9 @@
+@source "../templates/**/*.phtml";
+@source "../layout/**/*.xml";
+
+@import "./vipps-login.css";
+
+@theme {
+    --color-vipps: #ff5b24;
+    --color-mobilepay: #5A78FF;
+}

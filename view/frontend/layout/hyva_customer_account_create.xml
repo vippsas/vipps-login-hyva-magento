@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- Hyvä compatibility: render Vipps continue-with on account create page -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="vipps.new.account" remove="true" />
+        <referenceContainer name="content">
+            <container name="hyva.vipps.new.account" label="Vipps New Account Container" htmlTag="div" htmlClass="login-container" before="-">
+                <block class="Vipps\Login\Block\Account\Create" name="hyva_vipps_login_links" template="Vipps_HyvaLogin::account/create/vipps_register.phtml" before="-" ifconfig="vipps/login/enabled">
+                    <block class="Vipps\Login\Block\Account\Template" name="hyva_vipps_form_register_button" template="Vipps_HyvaLogin::buttons/continue-with.phtml" before="-"/>
+                </block>
+            </container>
+        </referenceContainer>
+    </body>
+</page>
+

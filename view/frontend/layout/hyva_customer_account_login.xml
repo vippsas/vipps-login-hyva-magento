@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="vipps_login_holder" remove="true" />
+        <referenceContainer name="content">
+            <block
+                class="Vipps\Login\Block\Account\Template"
+                name="hyva_vipps_login_holder"
+                template="Vipps_HyvaLogin::buttons/signin-with.phtml"
+                before="-"
+                ifconfig="vipps/login/enabled" />
+        </referenceContainer>
+    </body>
+</page>
+

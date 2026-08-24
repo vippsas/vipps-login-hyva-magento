@@ -1,0 +1,77 @@
+<?php
+/**
+ * Copyright 2026 Vipps
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
+ * documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+ * the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software,
+ * and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ * TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON INFRINGEMENT. IN NO EVENT SHALL
+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+ * CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+ * IN THE SOFTWARE.
+ */
+
+declare(strict_types=1);
+/** @var \Vipps\Login\Block\Account\Create $block */
+?>
+<?php if (!$block->isVippsLoggedIn()) : ?>
+    <div
+        class="login-vipps-holder new-account"
+        id="register-area"
+        x-data="registerArea()"
+        x-init="init()"
+    >
+        <?= $block->getChildHtml('hyva_vipps_form_register_button') ?>
+
+        <div class="link-toggle mt-2.5 flex" @click="toggle">
+            <span class="mr-2.5"><?= $block->escapeHtml(__('or')) ?></span>
+            <p class="cursor-pointer underline text-[#706B8B]"><?= $block->escapeHtml(__('register with email')) ?></p>
+        </div>
+    </div>
+
+    <script>
+        function registerArea() {
+            return {
+                open: false,
+
+                init() {
+                    // Check mage-messages cookie (Hyvä still uses it)
+                    const messages = window.hyva?.getCookie('mage-messages');
+
+                    if (messages && messages.length) {
+                        this.open = true;
+                        this.showForm();
+                    }
+
+                    // If toggle doesn't exist → fallback behavior
+                    if (!document.querySelector('.link-toggle')) {
+                        this.open = true;
+                        this.showForm();
+                        this.removePasswordFields();
+                    }
+                },
+
+                toggle() {
+                    this.open = !this.open;
+                    this.showForm();
+                },
+
+                showForm() {
+                    const form = document.querySelector('.form-create-account');
+                    if (!form) return;
+
+                    form.style.display = this.open ? 'block' : 'none';
+                },
+
+                removePasswordFields() {
+                    document.querySelectorAll(
+                        '.form-create-account label[for="password"], .form-create-account label[for="password-confirmation"]'
+                    ).forEach(el => el.parentElement.remove());
+                }
+            }
+        }
+    </script>
+<?php endif; ?>
