@@ -1,0 +1,19 @@
+<?php
+
+declare(strict_types=1);
+/** @var $block \Vipps\Login\Block\Account\Template */
+
+$brandLogo = $block->getViewFileUrl('Vipps_HyvaLogin::images/vipps-white-logo.png');
+if ($block->getClassName() === 'mobilepay') {
+    $brandLogo = $block->getViewFileUrl('Vipps_HyvaLogin::images/mobilepay-logo.svg');
+}
+?>
+<div class="login-vipps">
+    <form action="<?= $block->escapeUrl($block->getUrl('vipps/login/index')); ?>" method="post">
+        <input type="hidden" name="form_key" value="<?= $block->getFormKey() ?>" />
+        <button type="submit" class="action create primary vipps-btn <?= $block->getClassName() ?>">
+            <?= $block->escapeHtml(__('Log in with')) ?>
+            <img src="<?= $brandLogo ?>" class="icon-vipps"></img>
+        </button>
+    </form>
+</div>
